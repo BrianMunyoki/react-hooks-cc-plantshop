@@ -1,15 +1,15 @@
 import React from "react";
 
-function PlantCard({ name, image, price, inStock }) {
+function PlantCard({ plant, onToggleStock }) {
   return (
-    <li className="card" data-testid="plant-item">
-      <img src={image} alt={name} />
-      <h4>{name}</h4>
-      <p>Price: {price}</p>
-      {inStock ? (
-        <button className="primary" onClick={()=>handleToggleStock(id)}>In Stock</button>
+    <li data-testid="plant-item" className="card">
+      <img src={plant.image} alt={plant.name} />
+      <h4>{plant.name}</h4>
+      <p>Price: {plant.price}</p>
+      {plant.inStock ? (
+        <button onClick={() => onToggleStock(plant.id)}>In Stock</button>
       ) : (
-        <button onClick={()=>handleToggleStock(id)}>Out of Stock</button>
+        <button onClick={() => onToggleStock(plant.id)}>Out of Stock</button>
       )}
     </li>
   );
